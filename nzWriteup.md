@@ -91,10 +91,49 @@ cur = con.cursor()
 for row in cur.execute('SELECT count(DISTINCT n.user) FROM nodes n JOIN ways w on n.user = w.user'):
     print(row)
 ```
+The outcome is `(482,)`
 
 #### Count of Nodes & Ways
+```python
+for row in cur.execute('SELECT count(id) FROM nodes'):
+    print(row)
+```
+Result: `(1009610,)`
+```python
+for row in cur.execute('SELECT count(id) FROM ways'):
+    print(row)
+```
+Result: `(104541,)`
 
 #### Various Info I Find Interesting
+```python
+for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="amenity" GROUP BY value ORDER BY count(value) desc LIMIT 10'):
+    print(row)
+```
+The above code (results below) is meant to search through the nodes_tags table and return the value/counts of the most common 10 traits associated with the tag value 'amenity'. The results actually make me very curious about what constitutes 'fast_food' and what's considered a 'restaurant' but that's a more in-depth dive for another time.
+```python
+('bench', 450)
+('restaurant', 211)
+('fast_food', 189)
+('cafe', 151)
+('bicycle_parking', 149)
+('toilets', 100)
+('waste_basket', 99)
+('drinking_water', 98)
+('parking', 85)
+('post_box', 82)
+```
+
+Now honestly for the below (finding the values associated with `crossing_ref`), I was immediately very confused, as initially upon reading 'zebra_crossing', I took it as meaning what's essentially animal crossing warning signs. Seeing 'pelican_crossing' as the only other result didn't help that mindset, but it did occur to me that zebras don't live in New Zealand, so some quick research explained the two (zebra crossings are the striped crosswalks and pelican crossings are pedestrian-controlled crossing lights). Now, though, after having that information, 39 total crossing references seems far too low so I'd like to look into that further as well.
+```python
+for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="crossing_ref" GROUP BY value ORDER BY count(value) desc'):
+    print(row)
+```
+Results:
+```python
+('zebra', 36)
+('pelican', 3)
+```
 
 ### Data Problems
 #### Street Name Suffixes
