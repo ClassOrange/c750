@@ -87,6 +87,7 @@ cur = con.cursor()
 ```
 
 #### Distinct User Count
+The query pulls only the distinct user values from the nodes table and the ways table (the two are combined and only distinct values are added to the count). It's a lot lwoer than the initial count I'd pulled using Python so it seems many users never contributed directly to the nodes or ways.
 ```python
 for row in cur.execute('SELECT count(DISTINCT n.user) FROM nodes n JOIN ways w on n.user = w.user'):
     print(row)
@@ -98,12 +99,12 @@ The outcome is `482`
 for row in cur.execute('SELECT count(id) FROM nodes'):
     print(row)
 ```
-Result: `1009610`
+Result: `1009610` nodes
 ```python
 for row in cur.execute('SELECT count(id) FROM ways'):
     print(row)
 ```
-Result: `104541`
+Result: `104541` ways
 
 #### Various Info I Find Interesting
 ```python
