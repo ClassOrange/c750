@@ -1,0 +1,9 @@
+https://sqlite.org/index.html
+https://www.tutorialspoint.com/sqlite/sqlite_python.htm
+https://www.geeksforgeeks.org/creating-a-sqlite-database-from-csv-with-python/
+https://likegeeks.com/python-sqlite3-tutorial/#:~:text=To%20use%20SQLite3%20in%20Python%2C%20first%20of%20all%2C,%28%29%20function%3A%20import%20sqlite3%20con%20%3D%20sqlite3.connect%20%28%27mydatabase.db%27%29
+https://docs.python.org/3/library/xml.etree.elementtree.html#xml.etree.ElementTree.iterparse
+https://docs.python.org/3/library/xml.etree.elementtree.html
+https://teamtreehouse.com/community/im-getting-an-error-that-is-tuple-object-has-no-attribute-append-how-do-i-fix
+https://medium.com/analytics-vidhya/converting-xml-data-to-csv-format-using-python-3ea09fa18d38#:~:text=Import%20the%20necessary%20python%20libraries.%202.%20Change%20the,create%20the%20root%20object%20of%20the%20xml%20tree.
+https://www.askpython.com/python-modules/xmltodict-module
