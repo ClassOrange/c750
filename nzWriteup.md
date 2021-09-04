@@ -206,7 +206,7 @@ This whole system could be made far easier by basing accepted formats on high-qu
 With a system to flag potential anomolies in the data (automatically comparing data as well as the ability for users to flag), items with a specific number or ratio of flags could be sent to users with high contribution rates and low flag rates.
 ```
 lcmortensen notices a single anomolic zip code in their home town and flags it
-koyel flags the same zip code and flags it
+koyel sees the same zip code and flags it
 The system sends an auto-generated alert or email to Rudy355, a high-quality contributor from the area
 Rudy can choose to accept the request to validate or refute the data
 ```
