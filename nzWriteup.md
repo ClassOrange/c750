@@ -91,19 +91,19 @@ cur = con.cursor()
 for row in cur.execute('SELECT count(DISTINCT n.user) FROM nodes n JOIN ways w on n.user = w.user'):
     print(row)
 ```
-The outcome is `(482,)`
+The outcome is `482`
 
 #### Count of Nodes & Ways
 ```python
 for row in cur.execute('SELECT count(id) FROM nodes'):
     print(row)
 ```
-Result: `(1009610,)`
+Result: `1009610`
 ```python
 for row in cur.execute('SELECT count(id) FROM ways'):
     print(row)
 ```
-Result: `(104541,)`
+Result: `104541`
 
 #### Various Info I Find Interesting
 ```python
