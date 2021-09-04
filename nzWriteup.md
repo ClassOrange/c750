@@ -16,7 +16,7 @@ http://overpass-api.de/api/map?bbox=172.488105,-43.608199,172.754500,-43.401101
 ```
 
 ### Data Details
-The file (I changed the aptly named 'map' to 'Christchurch.xml') size can obviously be found by inspecting the file's properties, but it can also be determined through Python code; the reason I've got `/ 1048576` in the code is to convert the information to MB:
+The file (I changed the aptly named 'map' to 'Christchurch.xml') size can obviously be found by inspecting the file's properties, but it can also be determined through Python code; the reason I've got `/ 1048576` in the code is to convert the result from bytes to MB:
 ```python
 def filesize(file):
     return (os.path.getsize(myMap) / 1048576)
