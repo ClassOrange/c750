@@ -76,6 +76,26 @@ pdWays = pandas.read_csv(waysFile)
 pdWays.to_sql('ways', con, if_exists = 'replace', index = False)
 ```
 
+### Database Details
+Querying the database using sqlite3 involves first opening a connection to the database and creating a connection cursor
+```
+ChristchurchDB.sqlite3  230MB
+```
+```python
+con = s3.connect(DB)
+cur = con.cursor()
+```
+
+#### Distinct User Count
+```python
+for row in cur.execute('SELECT count(DISTINCT n.user) FROM nodes n JOIN ways w on n.user = w.user'):
+    print(row)
+```
+
+#### Count of Nodes & Ways
+
+#### Various Info I Find Interesting
+
 ### Data Problems
 #### Street Name Suffixes
 The occurrence of invalid street suffixes, or those that are formatted outside a standard manner, is shockingly low in my dataset. The only ones returned were `Ave`, `Christchurch`, `Close`, `Crescent`, `Green`, `Maidstone`, `Parade`, `Quay`, `Runway`, `School`, `Terrace`, `Tuam`, and `Valley`. The code below has several precursors to working properly, all of which can be found in the project submission.
@@ -104,6 +124,7 @@ con.close()
 Querying the distinct `value` associated with a `key` of 'housenumber' showed a pretty hefty level of error. With a lot of these categories, the preference is to spell things out (hence "Road" instead of "Rd") but New Zealand's address conventions specifically work in a different way when it comes to the numbers. The standard format is to place a flat/unit number before the actual building number, separated with a slash, so the 4th unit of 165 A Street would be formatted `4/165 A Street`. It would seem a considerable amount of users chose to enter this information as `Flat 1, 100` or `Unit 18, 197` or actually several other non-standard formats.
 
 Some others definitely look like they have the possibility of error, such as `99/1` as it seems unlikely that there would be a 99th unit in a building whose address number is 1. As far as these goes, there doesn't actually seem to be a way to clean it programatically (you could with the 'flat' and 'unit' ones) as so many of them would require item-by-item verification.
+
 #### Others
 * `entrance` should have qualification values, such as 'front,' 'main,' or 'handicap' but frequently people enter a simple 'yes,' which seems far more suited to the `access` tag. 
 * In a single record, `key` has no value. It's not just the word 'None' but actually just none at all. That doesn't seem like something the programming would allow.
@@ -118,6 +139,7 @@ for row in cur.execute('SELECT DISTINCT n.user FROM nodes n
     print(row)
 con.close()
 ```
+
 #### Blind Verification
 For particularly problematic patterns, like if Tucson has a lot of quality issues overall or like in my case with the address number formatting, there could be a type of blind verification system. For a specific node, suppose the following values entered by users for a `key` of 'housenumber':
 ```
