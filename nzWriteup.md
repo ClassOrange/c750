@@ -107,7 +107,8 @@ Result: `(104541,)`
 
 #### Various Info I Find Interesting
 ```python
-for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="amenity" GROUP BY value ORDER BY count(value) desc LIMIT 10'):
+for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="amenity"
+                        GROUP BY value ORDER BY count(value) desc LIMIT 10'):
     print(row)
 ```
 The above code (results below) is meant to search through the nodes_tags table and return the value/counts of the most common 10 traits associated with the tag value 'amenity'. The results actually make me very curious about what constitutes 'fast_food' and what's considered a 'restaurant' but that's a more in-depth dive for another time.
@@ -126,7 +127,8 @@ The above code (results below) is meant to search through the nodes_tags table a
 
 Now honestly for the below (finding the values associated with `crossing_ref`), I was immediately very confused, as initially upon reading 'zebra_crossing', I took it as meaning what's essentially animal crossing warning signs. Seeing 'pelican_crossing' as the only other result didn't help that mindset, but it did occur to me that zebras don't live in New Zealand, so some quick research explained the two (zebra crossings are the striped crosswalks and pelican crossings are pedestrian-controlled crossing lights). Now, though, after having that information, 39 total crossing references seems far too low so I'd like to look into that further as well.
 ```python
-for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="crossing_ref" GROUP BY value ORDER BY count(value) desc'):
+for row in cur.execute('SELECT value, count(value) FROM nodes_tags WHERE key="crossing_ref"
+                        GROUP BY value ORDER BY count(value) desc'):
     print(row)
 ```
 Results:
