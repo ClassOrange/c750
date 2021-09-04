@@ -77,10 +77,10 @@ pdWays.to_sql('ways', con, if_exists = 'replace', index = False)
 ```
 
 ### Database Details
-Querying the database using sqlite3 involves first opening a connection to the database and creating a connection cursor
 ```
 ChristchurchDB.sqlite3...230MB
 ```
+Querying the database using sqlite3 involves first opening a connection to the database and creating a connection cursor
 ```python
 con = s3.connect(DB)
 cur = con.cursor()
